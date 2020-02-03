@@ -13,6 +13,8 @@ import com.cucumber.listener.Reporter;
 import com.google.common.io.Files;
 
 import constants.ApplicationConstants;
+import org.apache.commons.exec.environment.EnvironmentUtils;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Hooks {
 
@@ -31,8 +33,25 @@ public class Hooks {
 	@Before
 	public void setUp() {
 			try{
-				System.setProperty("webdriver.chrome.driver", ApplicationConstants.SYSTEM_PATH+"//src//main//resources//driver//chromedriver.exe");
-				driver = new ChromeDriver();
+				try{
+					//ClassLoader classLoader = getClass().getClassLoader();
+					ChromeOptions options = new ChromeOptions();
+					//options.addArguments("--headless");
+					options.addArguments("window-size=1200x600");
+					String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
+					System.out.println("Path: "+binaryPath);
+					options.setBinary(binaryPath);     
+					options.addArguments("--disable-gpu");
+					options.addArguments("--no-sandbox");       
+					//System.out.println(JSONService.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+					//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//target//RESTfulExample//src//main//resources//driver//chromedriver.exe");
+					driver = new ChromeDriver();
+					System.out.println("-------------------"+System.getProperty("user.dir"));
+				}
+				catch(Exception ex){
+					System.out.println("Ex1 :: "+ex);
+					ex.printStackTrace();
+				}
 				ApplicationConstants.driverMap.put(Thread.currentThread().getId(), driver);
 				//-----------------below code is for hub node configuration--------------------------------
 				/*System.setProperty("webdriver.chrome.driver", "C://Users//hajmera//Downloads//CucumberPOC_1"+"//src//main//resources//driver//chromedriver.exe");
@@ -42,7 +61,7 @@ public class Hooks {
 				capabilities.setPlatform(Platform.WIN10);
 				driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
 				ApplicationConstants.driverMap.put(Thread.currentThread().getId(), driver);*/
-			}
+				}
 			catch(Exception ex){
 				ex.printStackTrace();
 			}
