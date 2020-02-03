@@ -14,6 +14,7 @@
 		<allure.version>1.4.22</allure.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+	        <jetty-runner.version>7.4.5.v20110725</jetty-runner.version>
 	</properties>
 	
 	<build>
@@ -130,7 +131,12 @@
 		</plugins>
 	</build>
 	<dependencies>
-
+		<dependency>
+		    <groupId>org.mortbay.jetty</groupId>
+		    <artifactId>jetty-runner</artifactId>
+		    <version>${jetty-runner.version}</version>
+		    <scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
