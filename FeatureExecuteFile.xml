@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="MySuite" parallel="classes">
+  <test name="MyTest">
+    <classes>
+      <class name="runners.OpportunityRunner_2"/>
+    </classes>
+  </test> <!-- MyTest -->
+</suite> <!-- MySuite -->
