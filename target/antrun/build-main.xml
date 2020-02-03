@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project name="maven-antrun-" default="main"  >
-<target name="main">
-  <copy todir="C:\Users\hajmera\Downloads\CucumberPOC_1/target/classes">
-    <fileset includes="**/*" dir="C:\Users\hajmera\Downloads\CucumberPOC_1/target/test-classes"/>
-  </copy>
-</target>
-</project>
