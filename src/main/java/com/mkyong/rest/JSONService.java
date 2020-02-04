@@ -19,14 +19,9 @@ public class JSONService {
 	@GET
 	@Path("/get")
 	@Produces("application/json")
-	public Product getProductInJSON() throws Exception{
+	public void getProductInJSON() throws Exception{
 		MainClass mainClass = new MainClass();
 		mainClass.runTestNGTest();
-		Product product = new Product();
-		product.setName(PRODUCT_NAME);
-		product.setQty(PRODUCT_QTY);
-		return product; 
-
 	}
 
 	@POST
