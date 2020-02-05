@@ -36,7 +36,7 @@ public class Hooks {
 				try{
 					//ClassLoader classLoader = getClass().getClassLoader();
 					ChromeOptions options = new ChromeOptions();
-					//options.addArguments("--headless");
+					options.addArguments("--headless");
 					options.addArguments("window-size=1200x600");
 					String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
 					System.out.println("Path: "+binaryPath);
