@@ -15,6 +15,7 @@ import com.google.common.io.Files;
 import constants.ApplicationConstants;
 import org.apache.commons.exec.environment.EnvironmentUtils;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class Hooks {
 
@@ -38,6 +39,9 @@ public class Hooks {
 					ChromeOptions options = new ChromeOptions();
 					options.addArguments("--headless");
 					options.addArguments("window-size=1200x600");
+					DesiredCapabilities capabilities = new DesiredCapabilities();
+					capabilities.setCapability(ChromeOptions.CHROMEDRIVER_VERSION, "2.39");
+					options.merge(capabilities);
 					String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
 					System.out.println("Path: "+binaryPath);
 					options.setBinary(binaryPath);     
