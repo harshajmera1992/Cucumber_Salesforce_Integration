@@ -40,7 +40,7 @@ public class Hooks {
 					options.addArguments("--headless");
 					options.addArguments("window-size=1200x600");
 					DesiredCapabilities capabilities = new DesiredCapabilities();
-					capabilities.setCapability(ChromeOptions.CHROMEDRIVER_VERSION, "2.39");
+					capabilities.setCapability(ChromeOptions.CHROMEDRIVER_VERSION, "2.46");
 					options.merge(capabilities);
 					String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
 					System.out.println("Path: "+binaryPath);
