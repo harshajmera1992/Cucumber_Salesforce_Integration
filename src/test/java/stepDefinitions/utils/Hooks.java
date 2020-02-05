@@ -35,7 +35,8 @@ public class Hooks {
 	public void setUp() {
 			try{
 				try{
-					//ClassLoader classLoader = getClass().getClassLoader();
+					/*************************************old code*//////////////////
+					/*//ClassLoader classLoader = getClass().getClassLoader();
 					ChromeOptions options = new ChromeOptions();
 					options.addArguments("--headless");
 					options.addArguments("window-size=1200x600");
@@ -49,6 +50,9 @@ public class Hooks {
 					//System.out.println(JSONService.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 					//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//target//RESTfulExample//src//main//resources//driver//chromedriver.exe");
 					driver = new ChromeDriver(capabilities);
+					System.out.println("-------------------"+System.getProperty("user.dir"));*/
+					System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//src//main//resources//driver//chromedriver");
+					driver = new ChromeDriver();
 					System.out.println("-------------------"+System.getProperty("user.dir"));
 				}
 				catch(Exception ex){
