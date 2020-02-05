@@ -39,9 +39,8 @@ public class Hooks {
 					ChromeOptions options = new ChromeOptions();
 					options.addArguments("--headless");
 					options.addArguments("window-size=1200x600");
-					DesiredCapabilities capabilities = new DesiredCapabilities();
-					capabilities.setCapability(ChromeOptions.VERSION, "80.0.3987.87");
-					options.merge(capabilities);
+					DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+					capabilities.setCapability("version", "80");
 					String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
 					System.out.println("Path: "+binaryPath);
 					options.setBinary(binaryPath);     
@@ -49,7 +48,7 @@ public class Hooks {
 					options.addArguments("--no-sandbox");       
 					//System.out.println(JSONService.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 					//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//target//RESTfulExample//src//main//resources//driver//chromedriver.exe");
-					driver = new ChromeDriver();
+					driver = new ChromeDriver(capabilities);
 					System.out.println("-------------------"+System.getProperty("user.dir"));
 				}
 				catch(Exception ex){
