@@ -42,6 +42,7 @@ public class GenericActions {
 	public static void searchFromAppLauncher(String appName) throws InterruptedException {
 		Thread.sleep(9000L);
 		GenericHelper.switchtoDefault();
+		Thread.sleep(2500);
 		ButtonHelper.click(By.xpath("(//div[@class='slds-icon-waffle'])[last()]"));
 		Thread.sleep(8000);
 		TextBoxHelper.sendKeys(By.xpath(".//input[contains(@placeholder,'Search apps or items...')]"), appName);
@@ -184,6 +185,8 @@ public class GenericActions {
 	
 	public static void click_Details_Tab() throws InterruptedException {
 		Thread.sleep(5500);
+		WaitHelper.waitForElementPresence(By.xpath("(//span[text()='Details'])[last()]//parent::a"), 30); 
+		Thread.sleep(1000); 
 		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("(//span[text()='Details'])[last()]//parent::a")); 
 	}
 	
