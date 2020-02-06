@@ -185,7 +185,7 @@ public class GenericActions {
 	
 	public static void click_Details_Tab() throws InterruptedException {
 		Thread.sleep(5500);
-		WaitHelper.waitForElementPresence(By.xpath("(//span[text()='Details'])[last()]//parent::a"), 30); 
+		WaitHelper.waitForElementPresence(By.xpath("(//span[text()='Details'])[last()]//parent::a"), 60); 
 		Thread.sleep(1000); 
 		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("(//span[text()='Details'])[last()]//parent::a")); 
 	}
