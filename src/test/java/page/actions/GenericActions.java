@@ -176,7 +176,7 @@ public class GenericActions {
 		Thread.sleep(1500); 
 		ButtonHelper.click(By.xpath("(//span[text()='"+list.get(0).get("Close Date")+"'])[last()]"));
 		Thread.sleep(2500); 
-		ButtonHelper.click(By.xpath("(//span[text()='Stage']//parent::span//following-sibling::div//a)[last()]"));
+		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("(//span[text()='Stage']//parent::span//following-sibling::div//a)[last()]"));
 		Thread.sleep(1500); 
 		ButtonHelper.click(By.xpath("(//a[@title='"+list.get(0).get("Stage")+"'])[last()]"));
 		Thread.sleep(1500);
