@@ -22,6 +22,7 @@ public class JSONService {
 	public Response getProductInJSON() throws Exception{
 		MainClass mainClass = new MainClass();
 		mainClass.runTestNGTest();
+		System.out.println("!!!!!!!!!!!!!!!!!      Automation suite executed          !!!!!!!!!!!!!!!!");
 		String result = "!!!!!!!!!!!!!!!!!      Automation suite executed          !!!!!!!!!!!!!!!!";
 		return Response.status(200).entity(result).build();
 	}
