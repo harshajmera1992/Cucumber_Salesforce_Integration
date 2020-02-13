@@ -6,14 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
+import constants.ApplicationConstants;
 import helper.javaUtils.GenericJavaUtils;
-import helper.jiraUtils.TestListener;
 public class MainClass {
 	public void runTestNGTest(/*Map<String,String> testngParams*/) throws ClassNotFoundException
 	{   //Create an instance on TestNG 
@@ -90,7 +89,7 @@ public class MainClass {
 		//This Map can hold your testng Parameters. 
 		 Map<String,String> testngParams = new HashMap<String,String> ();
 		testngParams.put("device1esktop","device1esktop");   
-      dt.runTestNGTest(testngParams); 
+      //dt.runTestNGTest(testngParams); 
 		dt.runTestNGTest(); 
 	}*/
 }
