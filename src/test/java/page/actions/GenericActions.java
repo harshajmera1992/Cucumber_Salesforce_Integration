@@ -69,8 +69,10 @@ public class GenericActions {
 	}
 	
 	public static void click_on_tab() throws InterruptedException{
-		Thread.sleep(7500);
+		Thread.sleep(4500);
 		System.out.println("Clicking ..............");
+		WaitHelper.waitForElementPresence(By.xpath("//a[@title='Opportunities']//following-sibling::one-app-nav-bar-item-dropdown//lightning-icon"), 30);
+		Thread.sleep(2500);
 		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("//a[@title='Opportunities']//following-sibling::one-app-nav-bar-item-dropdown//lightning-icon"));
 		Thread.sleep(6000);
 		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("//span[contains(text(),'New Opportunity')]//ancestor::a//lightning-primitive-icon"));
