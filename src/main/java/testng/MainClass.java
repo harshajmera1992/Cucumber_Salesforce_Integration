@@ -73,7 +73,7 @@ public class MainClass {
 	{ 
 		FileWriter writer; 
 		try { 
-			writer = new FileWriter(new File("FeatureExecuteFile.xml")); 
+			writer = new FileWriter(new File(ApplicationConstants.SYSTEM_PATH+"//src//main//java//testng//FeatureExecuteFile.xml")); 
 			writer.write(mSuite.toXml()); 
 			writer.flush(); 
 			writer.close(); 
