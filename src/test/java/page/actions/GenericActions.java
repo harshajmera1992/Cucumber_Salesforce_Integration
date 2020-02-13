@@ -42,7 +42,8 @@ public class GenericActions {
 	public static void searchFromAppLauncher(String appName) throws InterruptedException {
 		Thread.sleep(9000L);
 		GenericHelper.switchtoDefault();
-		Thread.sleep(2500);
+		WaitHelper.waitForElementPresence(By.xpath("(//div[@class='slds-icon-waffle'])[last()]"), 60); 
+		Thread.sleep(1500);
 		ButtonHelper.click(By.xpath("(//div[@class='slds-icon-waffle'])[last()]"));
 		Thread.sleep(8000);
 		TextBoxHelper.sendKeys(By.xpath(".//input[contains(@placeholder,'Search apps or items...')]"), appName);
@@ -64,17 +65,17 @@ public class GenericActions {
 	public static void click_on_tab(String tab) throws InterruptedException{
 		searchFromAppLauncher(tab); 
 		Thread.sleep(5000);
-		ButtonHelper.click(By.xpath("(//a[@title='"+tab+"'])[1]")); 
+		ButtonHelper.click(By.xpath("(//a[@title='"+tab+"'])[last]")); 
 	}
 	
-	/*public static void click_on_tab() throws InterruptedException{
+	public static void click_on_tab() throws InterruptedException{
 		Thread.sleep(7500);
 		System.out.println("Clicking ..............");
 		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("//a[@title='Opportunities']//following-sibling::one-app-nav-bar-item-dropdown//lightning-icon"));
 		Thread.sleep(6000);
 		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("//span[contains(text(),'New Opportunity')]//ancestor::a//lightning-primitive-icon"));
 	}
-*/
+
 	public static void closeLightningPopup() throws InterruptedException{
 		Thread.sleep(1500); 
 		if(GenericHelper.getElementCount(By.xpath("//a[@title='Close']"))>0){
@@ -176,7 +177,7 @@ public class GenericActions {
 		Thread.sleep(1500); 
 		ButtonHelper.click(By.xpath("(//span[text()='"+list.get(0).get("Close Date")+"'])[last()]"));
 		Thread.sleep(2500); 
-		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("(//span[text()='Stage']//parent::span//following-sibling::div//a)[last()]"));
+		ButtonHelper.click(By.xpath("//span[text()='Stage']//parent::span//following-sibling::div//a"));
 		Thread.sleep(1500); 
 		ButtonHelper.click(By.xpath("(//a[@title='"+list.get(0).get("Stage")+"'])[last()]"));
 		Thread.sleep(1500);
@@ -185,7 +186,7 @@ public class GenericActions {
 	
 	public static void click_Details_Tab() throws InterruptedException {
 		Thread.sleep(5500);
-		WaitHelper.waitForElementPresence(By.xpath("(//span[text()='Details'])[last()]//parent::a"), 60); 
+		WaitHelper.waitForElementPresence(By.xpath("(//span[text()='Details'])[last()]//parent::a"), 30); 
 		Thread.sleep(1000); 
 		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("(//span[text()='Details'])[last()]//parent::a")); 
 	}
