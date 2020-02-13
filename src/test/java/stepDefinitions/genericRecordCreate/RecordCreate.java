@@ -41,8 +41,8 @@ public class RecordCreate {
 	
 	@And("Click on Opportunities tab dropdown and then on New Opportunity link")
 	public void navigateToOpportunitiesTab()throws Throwable {
-		GenericActions.click_on_tab("Opportunities");
-		GenericActions.click_on_button("New"); 
+		GenericActions.click_on_tab();
+	//	GenericActions.click_on_button("New"); 
 		Reporter.addStepLog("Navigated to opportunities tab and clicked on New button"); 
 	}
 	
