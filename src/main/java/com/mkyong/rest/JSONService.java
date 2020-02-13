@@ -19,9 +19,11 @@ public class JSONService {
 	@GET
 	@Path("/get")
 	@Produces("application/json")
-	public void getProductInJSON() throws Exception{
+	public Response getProductInJSON() throws Exception{
 		MainClass mainClass = new MainClass();
 		mainClass.runTestNGTest();
+		String result = "!!!!!!!!!!!!!!!!!      Automation suite executed          !!!!!!!!!!!!!!!!";
+		return Response.status(200).entity(result).build();
 	}
 
 	@POST
