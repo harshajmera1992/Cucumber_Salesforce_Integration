@@ -33,7 +33,7 @@ public class RecordCreate {
 	@Given("Login to application with username - \"([^\"]*)\" and password - \"([^\"]*)\"")
 	public void login(String username, String password)throws Throwable {
 		try{
-		GenericActions.navigateToUrl("SFDC");
+		//GenericActions.navigateToUrl("SFDC");
 		GenericActions.login(username, password);
 		GenericActions.redirectToLightningIfRequired();
 		Reporter.addStepLog("Logged in to application with username :: "+username); 
