@@ -39,11 +39,16 @@ public class GenericActions {
 	}
 
 	public static void login(String username, String password) throws InterruptedException{
+		try{
 		Thread.sleep(1500);
 		WaitHelper.waitForElementPresence(GenericActionsObjects.USERNAME, 60); 
 		TextBoxHelper.sendKeys(GenericActionsObjects.USERNAME, username);
 		TextBoxHelper.sendKeys(GenericActionsObjects.PASSWORD, password);
 		ButtonHelper.click(GenericActionsObjects.LOGIN_BUTTON);
+		}catch(Exception ex){
+			System.out.println("error in getting values444444444444444444"+ex.getMessage());
+			ex.printStackTrace();
+		}
 	}
 	
 	public static void searchFromAppLauncher(String appName) throws InterruptedException {
