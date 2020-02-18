@@ -30,7 +30,12 @@ public class GenericActions {
 			url = ExcelDataReader.data(PathConstants.SAMPLEDATA_PATH, "LoginDetails").get(0).get("URL(SFDC)");
 			System.out.println(url +"----");
 			Thread.sleep(3500); 
-		NavigationHelper.navigateTo(url);  
+			try{
+			NavigationHelper.navigateTo(url);  
+			}catch(Exception ex){
+				 System.out.println("error in getting values"+ex.getMessage());
+			    	ex.printStackTrace();
+			}
 	}
 
 	public static void login(String username, String password){
