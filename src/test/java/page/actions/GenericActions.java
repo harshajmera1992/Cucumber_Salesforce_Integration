@@ -38,12 +38,12 @@ public class GenericActions {
 			}
 	}
 
-	public static void login(String username, String password){
+	public static void login(String username, String password) throws InterruptedException{
 		Thread.sleep(1500);
 		WaitHelper.waitForElementPresence(GenericActionsObjects.USERNAME, 60); 
 		TextBoxHelper.sendKeys(GenericActionsObjects.USERNAME, username);
 		TextBoxHelper.sendKeys(GenericActionsObjects.PASSWORD, password);
-		ButtonHelper.click(GenericActionsObjects.LOGIN_BUTTON); 
+		ButtonHelper.click(GenericActionsObjects.LOGIN_BUTTON);
 	}
 	
 	public static void searchFromAppLauncher(String appName) throws InterruptedException {
