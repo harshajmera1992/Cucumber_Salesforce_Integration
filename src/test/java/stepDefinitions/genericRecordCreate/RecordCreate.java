@@ -21,16 +21,26 @@ public class RecordCreate {
 
 	@Given("Navigate to \"([^\"]*)\" application url")
 	public void navigateToUrl(String appName)throws Throwable {
+		try{
 		GenericActions.navigateToUrl(appName);
 		Reporter.addStepLog("Navigated to url"); 
+		}catch(Exception ex){
+			System.out.println("error in getting values11111111111111"+ex.getMessage());
+			ex.printStackTrace();
+		}
 	}
 	
 	@Given("Login to application with username - \"([^\"]*)\" and password - \"([^\"]*)\"")
 	public void login(String username, String password)throws Throwable {
+		try{
 		GenericActions.navigateToUrl("SFDC");
 		GenericActions.login(username, password);
 		GenericActions.redirectToLightningIfRequired();
 		Reporter.addStepLog("Logged in to application with username :: "+username); 
+		}catch(Exception ex){
+			System.out.println("error in getting values22222222222222222"+ex.getMessage());
+			ex.printStackTrace();
+		}
 	}
 
 	@When("Navigate to App Launcher -> \"([^\"]*)\" app")
