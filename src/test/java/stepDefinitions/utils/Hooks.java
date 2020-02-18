@@ -41,14 +41,14 @@ public class Hooks {
 					options.addArguments("window-size=1200x600");
 					DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 					//capabilities.setCapability("version", "80");
-					String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
+					String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_BIN");
 					System.out.println("Path: "+binaryPath);
 					options.setBinary(binaryPath);     
 					options.addArguments("--disable-gpu");
 					options.addArguments("--no-sandbox");       
 					//System.out.println(JSONService.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 					//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//target//RESTfulExample//src//main//resources//driver//chromedriver.exe");
-					driver = new ChromeDriver(capabilities);
+					driver = new ChromeDriver(options);
 					System.out.println("-------------------"+System.getProperty("user.dir"));
 				}
 				catch(Exception ex){
