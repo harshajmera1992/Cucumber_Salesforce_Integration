@@ -41,7 +41,7 @@ public class Hooks {
 					options.addArguments("window-size=1200x600");
 					DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 					//capabilities.setCapability("version", "80");
-					String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_BIN");
+					String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
 					System.out.println("Path: "+binaryPath);
 					options.setBinary(binaryPath);     
 					options.addArguments("--disable-gpu");
