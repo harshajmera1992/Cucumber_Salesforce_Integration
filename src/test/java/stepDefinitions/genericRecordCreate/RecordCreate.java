@@ -35,7 +35,7 @@ public class RecordCreate {
 		try{
 		GenericActions.navigateToUrl("SFDC");
 		GenericActions.login(username, password);
-		GenericActions.redirectToLightningIfRequired();
+		//GenericActions.redirectToLightningIfRequired();
 		Reporter.addStepLog("Logged in to application with username :: "+username); 
 		}catch(Exception ex){
 			System.out.println("error in getting values22222222222222222"+ex.getMessage());
