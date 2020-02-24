@@ -44,7 +44,9 @@ public class GenericActions {
 		WaitHelper.waitForElementPresence(GenericActionsObjects.USERNAME, 60); 
 		TextBoxHelper.sendKeys(GenericActionsObjects.USERNAME, username);
 		TextBoxHelper.sendKeys(GenericActionsObjects.PASSWORD, password);
+		System.out.println("!!!!  -- Entered username and password -- !!!!!!");
 		ButtonHelper.click(GenericActionsObjects.LOGIN_BUTTON);
+		System.out.println("!!!!  -- Clicked on login button -- !!!!!!");
 		}catch(Exception ex){
 			System.out.println("error in getting values444444444444444444"+ex.getMessage());
 			ex.printStackTrace();
