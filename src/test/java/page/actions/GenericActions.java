@@ -25,55 +25,42 @@ import cucumber.api.DataTable;
 public class GenericActions {
 
 	static String url = "";
-	
+
 	public static void navigateToUrl(String appName) throws InterruptedException{
-			url = ExcelDataReader.data(PathConstants.SAMPLEDATA_PATH, "LoginDetails").get(0).get("URL(SFDC)");
-			System.out.println(url +"----");
-			Thread.sleep(3500); 
-			try{
-			NavigationHelper.navigateTo(url);  
-			}catch(Exception ex){
-				 System.out.println("error in getting values333333333333"+ex.getMessage());
-			    	ex.printStackTrace();
-			}
+		url = ExcelDataReader.data(PathConstants.SAMPLEDATA_PATH, "LoginDetails").get(0).get("URL(SFDC)");
+		System.out.println(url +"----");
+		Thread.sleep(3500); 
+		NavigationHelper.navigateTo(url);  
 	}
 
 	public static void login(String username, String password) throws InterruptedException{
-		try{
 		Thread.sleep(1500);
 		WaitHelper.waitForElementPresence(GenericActionsObjects.USERNAME, 60); 
 		TextBoxHelper.sendKeys(GenericActionsObjects.USERNAME, username);
 		TextBoxHelper.sendKeys(GenericActionsObjects.PASSWORD, password);
-		System.out.println("!!!!  -- Entered username and password -- !!!!!!");
 		ButtonHelper.click(GenericActionsObjects.LOGIN_BUTTON);
-		System.out.println("!!!!  -- Clicked on login button -- !!!!!!");
-		}catch(Exception ex){
-			System.out.println("error in getting values444444444444444444"+ex.getMessage());
-			ex.printStackTrace();
-		}
 	}
-	
+
 	public static void searchFromAppLauncher(String appName) throws InterruptedException {
-		Thread.sleep(9000L);
+		Thread.sleep(3000L);
 		GenericHelper.switchtoDefault();
 		WaitHelper.waitForElementPresence(By.xpath("(//div[@class='slds-icon-waffle'])[last()]"), 60); 
 		Thread.sleep(1500);
 		ButtonHelper.click(By.xpath("(//div[@class='slds-icon-waffle'])[last()]"));
-		Thread.sleep(8000);
+		Thread.sleep(1500);
+		WaitHelper.waitForElementPresence(By.xpath("//button[text()='View All']"), 30);
+		Thread.sleep(2500);
+		ButtonHelper.click(By.xpath("//button[text()='View All']"));
+		Thread.sleep(2000);
+		WaitHelper.waitForElementPresence(By.xpath(".//input[contains(@placeholder,'Search apps or items...')]"), 30);
 		TextBoxHelper.sendKeys(By.xpath(".//input[contains(@placeholder,'Search apps or items...')]"), appName);
 	} 
 
 	public static void selectAppFromAppLauncher(String appName) throws Throwable {
 		searchFromAppLauncher(appName); 
 		Thread.sleep(5000);
-		int apps = GenericHelper.getElementCount(By.xpath("//div[@style='display: block;']//a[@class='appTileTitle']"));
-		for(int i=1; i<=apps; i++) {
-			String getAppName = TextBoxHelper.getText(By.xpath("(//div[@style='display: block;']//a[@class='appTileTitle'])["+i+"]")); 
-			if(getAppName.trim().equals(appName)){
-				ButtonHelper.click(By.xpath("(//div[@style='display: block;']//a[@class='appTileTitle'])["+i+"]")); 
-				break;
-			}
-		}
+		WaitHelper.waitForElementPresence(By.xpath("(//div[@class='slds-icon-waffle'])[last()]"), 30); 
+		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("//div[@data-name='"+appName+"']//mark[text()='"+appName+"']"));
 	}
 
 	public static void click_on_tab(String tab) throws InterruptedException{
@@ -81,7 +68,7 @@ public class GenericActions {
 		Thread.sleep(5000);
 		ButtonHelper.click(By.xpath("(//a[@title='"+tab+"'])[last]")); 
 	}
-	
+
 	public static void click_on_tab() throws InterruptedException{
 		Thread.sleep(4500);
 		System.out.println("Clicking ..............");
@@ -162,24 +149,24 @@ public class GenericActions {
 		}
 		Assert.assertEquals(actualName, expectedName); 
 	}
-	
+
 	public static void fillCampaignMendatoryFields(){
-		 WaitHelper.waitForElementPresence(GenericActionsObjects.CAMPAIGN_NAME_FIELD, 60); 
-		 TextBoxHelper.clear(GenericActionsObjects.CAMPAIGN_NAME_FIELD);
-		 TextBoxHelper.sendKeys(GenericActionsObjects.CAMPAIGN_NAME_FIELD, "Cucumber Demo Campaign");
+		WaitHelper.waitForElementPresence(GenericActionsObjects.CAMPAIGN_NAME_FIELD, 60); 
+		TextBoxHelper.clear(GenericActionsObjects.CAMPAIGN_NAME_FIELD);
+		TextBoxHelper.sendKeys(GenericActionsObjects.CAMPAIGN_NAME_FIELD, "Cucumber Demo Campaign");
 	}
-	
-	
+
+
 	public static void verifyCampaignRecord() throws InterruptedException{
-		
+
 		WaitHelper.hardWait(10000);
 		String name = TextBoxHelper.getText(GenericActionsObjects.CAMPAIGN_DETAIL_PAGE_LABEL);
-		 if(GenericHelper.IsElementPresentQuick(GenericActionsObjects.CAMPAIGN_DETAIL_PAGE_LABEL) && name.equals("Cucumber Demo Campaign")){
-				System.out.println("Record is created successfully");
-	         }
-	     else{
-	        System.out.println("Record is not created");
-	        }
+		if(GenericHelper.IsElementPresentQuick(GenericActionsObjects.CAMPAIGN_DETAIL_PAGE_LABEL) && name.equals("Cucumber Demo Campaign")){
+			System.out.println("Record is created successfully");
+		}
+		else{
+			System.out.println("Record is not created");
+		}
 	}
 
 	public static void fillMandatoryFieldsOpportunity(DataTable dt) throws InterruptedException {
@@ -191,7 +178,7 @@ public class GenericActions {
 		Thread.sleep(1500);
 		ButtonHelper.click(By.xpath("//a[@class='datePicker-openIcon display']")); 
 		Thread.sleep(1500); 
-		ButtonHelper.click(By.xpath("(//span[text()='"+list.get(0).get("Close Date")+"'])[last()]"));
+		ButtonHelper.click(By.xpath("(//button[text()='"+list.get(0).get("Close Date")+"'])[last()]"));
 		Thread.sleep(2500); 
 		ButtonHelper.click(By.xpath("//span[text()='Stage']//parent::span//following-sibling::div//a"));
 		Thread.sleep(1500); 
@@ -199,14 +186,14 @@ public class GenericActions {
 		Thread.sleep(1500);
 		TextBoxHelper.sendKeys(By.xpath("//span[text()='Amount']//parent::label//parent::div/input"), list.get(0).get("Amount"));
 	}
-	
+
 	public static void click_Details_Tab() throws InterruptedException {
 		Thread.sleep(5500);
 		WaitHelper.waitForElementPresence(By.xpath("(//span[text()='Details'])[last()]//parent::a"), 30); 
 		Thread.sleep(1000); 
 		ButtonHelper.clickOnElementWithJSExecutor(By.xpath("(//span[text()='Details'])[last()]//parent::a")); 
 	}
-	
+
 	public static void validateDealSize(String expectedDealSize) throws InterruptedException {
 		Thread.sleep(3500);
 		String dealSizeText = TextBoxHelper.getText(By.xpath("//span[text()='Deal Size']//parent::div//following-sibling::div/span/span")); 
