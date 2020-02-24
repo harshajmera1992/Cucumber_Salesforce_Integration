@@ -3,7 +3,7 @@ Description: The purpose of this feature is to validate deal size of the opportu
 
 	Scenario: Validate value of field "Deal Size" is set as "Small" when Amount ranges from 1,000 to 9,999
   	 Given Login to application with username - "qacandidate@tod.com.test" and password - "QATask4444"
- 	 ##And Navigate to App Launcher -> "Sales" app 
+ 	 And Navigate to App Launcher -> "Sales" app 
 	 And Click on Opportunities tab dropdown and then on New Opportunity link
 	 And Fill below mandatory fields of opportunity :
 			 |Opportunity Name 	   | Close Date | Stage 		  | Amount  |
